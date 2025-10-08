@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeni Yıl Geri Sayım</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #add8e6; /* 💙 Açık mavi arka plan */
+        color: white;
+        text-align: center;
+    }
+
+    #main {
+        padding: 30px;
+        border-radius: 15px;
+        background: #3a3f47;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+        color: #61dafb;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+    }
+
+    #clock {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .kutu {
+        color: #fff;
+        font-size: 3em;
+        padding: 15px 25px;
+        border-radius: 10px;
+        min-width: 80px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border-bottom: 4px solid #61dafb;
+        font-weight: bold;
+    }
+
+    /* Mor, Yeşil, Mor, Yeşil */
+    #days {
+        background-color: purple;
+    }
+
+    #hours {
+        background-color: green;
+    }
+
+    #minutes {
+        background-color: purple;
+    }
+
+    #seconds {
+        background-color: green;
+    }
+
+    /* Gün, Saat, Dakika, Saniye yazıları */
+    #display {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        font-size: 1em;
+        font-weight: 500;
+        color: white; /* 💙 Koyu mavi yazılar */
+    }
+
+    #display span {
+        min-width: 80px;
+        text-align: center;
+        padding: 0 25px;
+    }
+
+    h3 {
+        margin-top: 30px;
+        font-size: 1.2em;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <h1>Yeni Yıl</h1>
+
+    <div id="clock">
+      <div class="kutu" id="days">0</div>
+      <div class="kutu" id="hours">0</div>
+      <div class="kutu" id="minutes">0</div>
+      <div class="kutu" id="seconds">0</div>
+    </div>
+
+    <div id="display">
+      <span>Gün</span>
+      <span>Saat</span>
+      <span>Dakika</span>
+      <span>Saniye</span>
+    </div>
+
+    <h3>Молодежь Новый год уже не за горами.<h3>
+  </div>
+
+  <script>
+    function countdown() {
+      const targetDate = new Date("Jan 1, 2026 00:00:00").getTime();
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        document.getElementById("clock").innerHTML = "🎉 Yeni Yıl Geldi! 🎉";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    const timer = setInterval(countdown, 1000);
+    countdown();
+  </script>
+</body>
+</html>

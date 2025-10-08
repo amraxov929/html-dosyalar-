@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .main-content{
+        background-color: #3E3232;
+        min-height: 100vh;
+        color: #A87C7C;
+        font-family: "Gill Sans", calibri;
+        overflow: hidden;
+        padding: 10px 10%;
+    }
+
+    nav{
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    nav .logo{
+        color: #d4b3b3;
+        font-size: 30px;
+    }
+
+    nav ul li{
+        display: inline-block;
+        list-style: none;
+        margin: 10px 15px;
+        position: relative;
+    }
+
+    nav ul li a{
+        color: #A87C7C;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transition: .5s all ease-in;
+        cursor: pointer;
+    }
+
+    nav ul li a:hover{
+        background-color: #A87C7C;
+        color: #3E3232;
+    }
+
+    .section-box {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 250px;
+        background-color: #A87C7C;
+        color: #3E3232;
+        border-radius: 15px;
+        padding: 20px;
+        z-index: 10;
+    }
+
+    nav ul li:hover .section-box {
+        display: block;
+    }
+
+    .content{
+        margin-top: 10%;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .content h1{
+        font-size: 65px;
+        font-weight: 500;
+    }
+
+    .content h1 span{
+        color: #d4b3b3;
+    }
+
+    .content p{
+        margin: 2rem 0;
+        font-size: 24px;
+        font-weight: 200;
+        line-height: 1.7;
+    }
+
+    .content .btn{
+        color: #A87C7C;
+        border: 2px solid #A87C7C;
+        padding: 10px 45px;
+        border-radius: 40px;
+        font-size: 25px;
+        text-decoration: none;
+        transition: .5s all ease-in;
+        cursor: pointer;
+    }
+
+    .content .btn:hover{
+        background-color: #A87C7C;
+        color: #503C3C;
+    }
+
+    .social{margin-top: 4rem;}
+
+    .social .fab{
+        font-size: 30px;
+        margin-left: 20px;
+        padding: 10px;
+        color: #d4b3b3;
+        border-radius: 20px;
+        transition: .5s all ease-in-out;
+    }
+
+    .social .fab:hover{
+        background-color: #A87C7C;
+        color: #503C3C;
+    }
+
+    .right{
+        border-top-right-radius: 50px;
+        border-top-left-radius: 120px;
+        border-bottom-left-radius: 60px;
+        border-bottom-right-radius: 5px;
+        background-color:#A87C7C;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .right img{
+        width: 370px;
+        animation: move 4s linear infinite;
+    }
+
+    @keyframes move {
+        0%, 100%{ transform: translateX(-50px);}
+        50%{ transform: translateX(50px);}
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #A87C7C;
+        color: #3E3232;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .popup button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: #3E3232;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .popup button:hover {
+        background: #222;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <nav>
+      <div class="logo">My Logo</div>
+      <ul>
+        <li>
+          <a>Home</a>
+          <div class="section-box">
+            <h3>Welcome Home</h3>
+            <p>Burası anasayfa açıklama kısmı.</p>
+          </div>
+        </li>
+        <li>
+          <a>About</a>
+          <div class="section-box">
+            <h3>About Us</h3>
+            <p>Biz modern çözümler üreten bir ekibiz.</p>
+          </div>
+        </li>
+        <li>
+          <a>Services</a>
+          <div class="section-box">
+            <h3>Services</h3>
+            <p>- Web Development <br>- Mobile Apps <br>- Consulting</p>
+          </div>
+        </li>
+        <li>
+          <a>Contact</a>
+          <div class="section-box">
+            <h3>Contact</h3>
+            <p>Telefon: <b>+90 507 506 00 20</b></p>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <div>
+        <h1>Modern <span>Website</span></h1>
+        <p>Buraya siten için tanıtım yazısı ekleyebilirsin.</p>
+        <a class="btn" onclick="openPopup()">Buy Now</a>
+      </div>
+      <div class="right">
+        <img src="img/coffee.png" alt="coffee">
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <h2>Buy Now</h2>
+    <p>Satın alma işlemleri için buraya bilgilerini gir.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+</body>
+</html>
